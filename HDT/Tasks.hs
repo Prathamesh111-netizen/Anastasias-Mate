@@ -219,6 +219,7 @@ data Block = Block
     }
 
 instance Show Block where
+    show :: Block -> String
     show b = printf "{%d %d}" (slot b) (creator b)
 
 infixl 5 :>
@@ -235,9 +236,11 @@ instance Show Chain where
 -- |Computes the length of a @'Chain'@.  __TODO:__ Implement @'chainLength'@.
 --
 -- >>> chainLength Genesis
--- 0
+-- WAS 0
+-- NOW C:\Users\rocin\AppData\Local\Temp\extAD95: withFile: resource busy (file is locked)
 -- >>> chainLength $ Genesis :> Block 2 2 :> Block 3 0
--- 2
+-- WAS 2
+-- NOW C:\Users\rocin\AppData\Local\Temp\extADE4: withFile: resource busy (file is locked)
 chainLength :: Chain -> Int
 chainLength = error "TODO: implement chainLength"
 
@@ -298,7 +301,7 @@ node = error "TODO: implement node"
 -- returning the list of all broadcasts (with their timestamps).
 --
 -- __Hint:__ It might be helpful to keep track of
---
+--https://careers.cred.club/jobPosting?apply_url=https://jobs.lever.co/cred/005bb088-37b9-4f9c-a094-f3a1214dc2bb/apply
 --  * all active agents,
 --  * all delayed agents and
 --  * all agents waiting for a broadcast.
